@@ -14,18 +14,13 @@ async function bootstrap() {
       'Manage your income, expenses and your balance at Leet Banking.',
     )
     .setVersion('1.0')
-    .addTag('banking')
     .build();
-  const document = SwaggerModule.createDocument(app, config, {
-    ignoreGlobalPrefix: true,
-  });
+  const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
   // app config
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
-
-  app.setGlobalPrefix('api/v1');
 
   app.enableCors();
   await app.listen(3333);
