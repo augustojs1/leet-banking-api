@@ -5,6 +5,7 @@ import * as Joi from 'joi';
 import { UsersModule } from './users/users.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { JwtModule } from '@nestjs/jwt';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { JwtModule } from '@nestjs/jwt';
     MongooseModule.forRoot(process.env.MONGO_URI),
     UsersModule,
     AuthenticationModule,
+    TransactionsModule,
   ],
   controllers: [],
   providers: [],
