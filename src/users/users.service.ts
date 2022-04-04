@@ -19,10 +19,7 @@ export class UsersService {
       return user;
     }
 
-    throw new HttpException(
-      'User with this email does not exist',
-      HttpStatus.NOT_FOUND,
-    );
+    return null;
   }
 
   public async create(createUserDto: CreateUserDto) {
