@@ -2,7 +2,6 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ObjectId } from 'mongodb';
 import mongoose from 'mongoose';
-import { Double } from 'bson';
 
 export type TransactionDocument = Transaction & Document;
 
@@ -20,7 +19,7 @@ export class Transaction {
   title: string;
 
   @Prop({ required: true })
-  ammount: Double;
+  ammount: number;
 
   @Prop({ required: true })
   category: string;

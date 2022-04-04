@@ -1,4 +1,3 @@
-import { Double } from 'bson';
 import {
   IsNumber,
   IsString,
@@ -16,7 +15,7 @@ export class CreateTransactionDto {
   @IsNumber()
   @IsNotEmpty()
   @IsPositive()
-  ammount: Double | number;
+  ammount: number;
 
   @IsString()
   @IsNotEmpty()
