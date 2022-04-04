@@ -3,9 +3,6 @@ import {
   Get,
   Post,
   Body,
-  Patch,
-  Param,
-  Delete,
   HttpCode,
   UseGuards,
   Req,
@@ -18,11 +15,26 @@ import { LocalAuthenticationGuard } from './guard/localAuthentication.guard';
 import RequestWithUser from './interfaces/requestWithUser.interface';
 import JwtAuthenticationGuard from './guard/jwt-authentication.guard';
 
+import {
+  ApiBadRequestResponse,
+  ApiBearerAuth,
+  ApiBody,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
+import { LoginDto } from './dto/login.dto';
+
 @Controller('authentication')
 export class AuthenticationController {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
   @Post('register')
+  @ApiCreatedResponse({ description: 'User successfully registered.' })
+  @ApiBadRequestResponse({
+    description: 'User with this email already exists.',
+  })
+  @ApiBody({ type: RegisterDto })
   public async register(@Body() registerData: RegisterDto) {
     return await this.authenticationService.register(registerData);
   }
@@ -30,6 +42,9 @@ export class AuthenticationController {
   @HttpCode(200)
   @UseGuards(LocalAuthenticationGuard)
   @Post('login')
+  @ApiOkResponse({ description: 'User successfully logged in.' })
+  @ApiUnauthorizedResponse({ description: 'Wrong credentials provided.' })
+  @ApiBody({ type: LoginDto })
   public async login(
     @Req() request: RequestWithUser,
     @Res() response: Response,
@@ -43,6 +58,9 @@ export class AuthenticationController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Post('logout')
+  @ApiBearerAuth()
+  @ApiOkResponse({ description: 'User successfully logged out.' })
+  @ApiUnauthorizedResponse({ description: 'User should be authenticated' })
   public async logOut(
     @Req() request: RequestWithUser,
     @Res() response: Response,
@@ -56,6 +74,9 @@ export class AuthenticationController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Get('me')
+  @ApiOkResponse({ description: 'Returning authenticated user.' })
+  @ApiUnauthorizedResponse({ description: 'User should be authenticated' })
+  @ApiBearerAuth()
   authenticate(@Req() request: RequestWithUser) {
     const user = request.user;
     user.password = undefined;
