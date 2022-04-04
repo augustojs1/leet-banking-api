@@ -25,8 +25,8 @@ export class UsersService {
   }
 
   public async create(createUserDto: CreateUserDto) {
-    const appraiser = new this.userModel(createUserDto);
-    const user = await appraiser.save();
+    const createUser = new this.userModel(createUserDto);
+    const user = await createUser.save();
     return user;
   }
 }
