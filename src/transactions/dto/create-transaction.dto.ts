@@ -1,5 +1,12 @@
 import { Double } from 'bson';
-import { IsNumber, IsString, IsNotEmpty, IsPositive } from 'class-validator';
+import {
+  IsNumber,
+  IsString,
+  IsNotEmpty,
+  IsPositive,
+  IsEnum,
+} from 'class-validator';
+import { TransactionTypeEnum } from '../enum/transaction-type.enum';
 
 export class CreateTransactionDto {
   @IsString()
@@ -9,9 +16,14 @@ export class CreateTransactionDto {
   @IsNumber()
   @IsNotEmpty()
   @IsPositive()
-  price: Double | number;
+  ammount: Double | number;
 
   @IsString()
   @IsNotEmpty()
   category: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @IsEnum(TransactionTypeEnum)
+  type: TransactionTypeEnum;
 }

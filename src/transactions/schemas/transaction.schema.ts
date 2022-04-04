@@ -20,10 +20,16 @@ export class Transaction {
   title: string;
 
   @Prop({ required: true })
-  price: Double;
+  ammount: Double;
 
   @Prop({ required: true })
   category: string;
+
+  @Prop({
+    required: true,
+    enum: ['income', 'expense'],
+  })
+  type: 'income' | 'expense';
 }
 
 export const TransactionSchema = SchemaFactory.createForClass(Transaction);
