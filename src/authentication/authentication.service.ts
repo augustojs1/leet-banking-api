@@ -25,6 +25,15 @@ export class AuthenticationService {
   }
 
   public async register(registerData: RegisterDto) {
+    const user = await this.userService.findByEmail(registerData.email);
+
+    if (user) {
+      throw new HttpException(
+        'User with this email already exists!',
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
     const hashedPassword = await bcrypt.hash(registerData.password, 10);
 
     const createdUser = await this.userService.create({
@@ -37,6 +46,13 @@ export class AuthenticationService {
 
   public async login(loginData: LoginDto) {
     const user = await this.userService.findByEmail(loginData.email);
+
+    if (!user) {
+      throw new HttpException(
+        'User with this email does not exists!',
+        HttpStatus.NOT_FOUND,
+      );
+    }
 
     await this.verifyPassword(loginData.password, user.password);
 
