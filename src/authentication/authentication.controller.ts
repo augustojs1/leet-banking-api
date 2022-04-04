@@ -21,20 +21,30 @@ import {
   ApiBody,
   ApiCreatedResponse,
   ApiOkResponse,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { LoginDto } from './dto/login.dto';
+import { User, UserSchema } from 'src/users/schemas/user.schema';
 
-@Controller('authentication')
+@Controller('api/v1/authentication')
+@ApiTags('Authentication')
 export class AuthenticationController {
   constructor(private readonly authenticationService: AuthenticationService) {}
 
   @Post('register')
-  @ApiCreatedResponse({ description: 'User successfully registered.' })
   @ApiBadRequestResponse({
     description: 'User with this email already exists.',
   })
+  @ApiResponse({
+    status: 201,
+    description: 'User successfully registered.',
+    type: User,
+  })
   @ApiBody({ type: RegisterDto })
+  @ApiOperation({ summary: 'Register a new user.' })
   public async register(@Body() registerData: RegisterDto) {
     return await this.authenticationService.register(registerData);
   }
@@ -44,6 +54,7 @@ export class AuthenticationController {
   @Post('login')
   @ApiOkResponse({ description: 'User successfully logged in.' })
   @ApiUnauthorizedResponse({ description: 'Wrong credentials provided.' })
+  @ApiOperation({ summary: 'Login with an existent user.' })
   @ApiBody({ type: LoginDto })
   public async login(
     @Req() request: RequestWithUser,
@@ -61,6 +72,7 @@ export class AuthenticationController {
   @ApiBearerAuth()
   @ApiOkResponse({ description: 'User successfully logged out.' })
   @ApiUnauthorizedResponse({ description: 'User should be authenticated' })
+  @ApiOperation({ summary: 'Logout from server' })
   public async logOut(
     @Req() request: RequestWithUser,
     @Res() response: Response,
@@ -77,6 +89,7 @@ export class AuthenticationController {
   @ApiOkResponse({ description: 'Returning authenticated user.' })
   @ApiUnauthorizedResponse({ description: 'User should be authenticated' })
   @ApiBearerAuth()
+  @ApiOperation({ summary: 'Return authenticated user' })
   authenticate(@Req() request: RequestWithUser) {
     const user = request.user;
     user.password = undefined;

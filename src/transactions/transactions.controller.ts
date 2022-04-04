@@ -4,13 +4,16 @@ import { CreateTransactionDto } from './dto/create-transaction.dto';
 import RequestWithUser from 'src/authentication/interfaces/requestWithUser.interface';
 import JwtAuthenticationGuard from 'src/authentication/guard/jwt-authentication.guard';
 import { ObjectId } from 'mongodb';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-@Controller('transactions')
+@Controller('api/v1/transactions')
+@ApiTags('Transactions')
 export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
   @UseGuards(JwtAuthenticationGuard)
   @Post()
+  @ApiBearerAuth()
   create(
     @Req() request: RequestWithUser,
     @Body() createTransactionDto: CreateTransactionDto,
@@ -20,6 +23,7 @@ export class TransactionsController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Get()
+  @ApiBearerAuth()
   public async findAll(@Req() request: RequestWithUser) {
     const userId: ObjectId = request.user._id;
 
