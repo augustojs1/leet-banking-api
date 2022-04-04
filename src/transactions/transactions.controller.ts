@@ -15,9 +15,7 @@ export class TransactionsController {
     @Req() request: RequestWithUser,
     @Body() createTransactionDto: CreateTransactionDto,
   ) {
-    const userId: ObjectId = request.user._id;
-
-    return this.transactionsService.create(userId, createTransactionDto);
+    return this.transactionsService.create(request.user, createTransactionDto);
   }
 
   @UseGuards(JwtAuthenticationGuard)

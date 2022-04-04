@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ObjectId } from 'mongodb';
-import { Double } from 'bson';
 
 export type UserDocument = User & Document;
 
@@ -22,7 +21,7 @@ export class User {
   password: string;
 
   @Prop({ default: 0 })
-  balance: Double;
+  balance: number;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
