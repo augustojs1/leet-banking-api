@@ -17,6 +17,7 @@ import JwtAuthenticationGuard from './guard/jwt-authentication.guard';
 
 import {
   ApiBadRequestResponse,
+  ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
   ApiOkResponse,
@@ -57,6 +58,9 @@ export class AuthenticationController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Post('logout')
+  @ApiBearerAuth()
+  @ApiOkResponse({ description: 'User successfully logged out.' })
+  @ApiUnauthorizedResponse({ description: 'User should be authenticated' })
   public async logOut(
     @Req() request: RequestWithUser,
     @Res() response: Response,
@@ -70,6 +74,9 @@ export class AuthenticationController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Get('me')
+  @ApiOkResponse({ description: 'Returning authenticated user.' })
+  @ApiUnauthorizedResponse({ description: 'User should be authenticated' })
+  @ApiBearerAuth()
   authenticate(@Req() request: RequestWithUser) {
     const user = request.user;
     user.password = undefined;

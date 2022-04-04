@@ -11,12 +11,14 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Leet Banking API')
     .setDescription(
-      'Manage your income, expenses and your balance at the Leet Banking.',
+      'Manage your income, expenses and your balance at Leet Banking.',
     )
     .setVersion('1.0')
     .addTag('banking')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, config, {
+    ignoreGlobalPrefix: true,
+  });
   SwaggerModule.setup('api', app, document);
 
   // app config
