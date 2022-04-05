@@ -52,7 +52,11 @@ export class AuthenticationController {
   @HttpCode(200)
   @UseGuards(LocalAuthenticationGuard)
   @Post('login')
-  @ApiOkResponse({ description: 'User successfully logged in.' })
+  @ApiResponse({
+    status: 200,
+    description: 'User successfully authenticated.',
+    type: User,
+  })
   @ApiUnauthorizedResponse({ description: 'Wrong credentials provided.' })
   @ApiOperation({ summary: 'Login with an existent user.' })
   @ApiBody({ type: LoginDto })
@@ -71,7 +75,9 @@ export class AuthenticationController {
   @Post('logout')
   @ApiBearerAuth()
   @ApiOkResponse({ description: 'User successfully logged out.' })
-  @ApiUnauthorizedResponse({ description: 'User should be authenticated' })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized. User should be authenticated',
+  })
   @ApiOperation({ summary: 'Logout from server' })
   public async logOut(
     @Req() request: RequestWithUser,
@@ -86,10 +92,12 @@ export class AuthenticationController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Get('me')
-  @ApiOkResponse({ description: 'Returning authenticated user.' })
-  @ApiUnauthorizedResponse({ description: 'User should be authenticated' })
+  @ApiOkResponse({ description: 'Returning authenticated user.', type: User })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized. User should be authenticated.',
+  })
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Return authenticated user' })
+  @ApiOperation({ summary: 'Return authenticated user.' })
   authenticate(@Req() request: RequestWithUser) {
     const user = request.user;
     user.password = undefined;
