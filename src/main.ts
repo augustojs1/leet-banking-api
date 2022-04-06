@@ -22,7 +22,13 @@ async function bootstrap() {
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
-  app.enableCors();
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    allowedHeaders:
+      'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe',
+    methods: 'GET,PUT,POST,DELETE,UPDATE,OPTIONS,PATCH',
+    credentials: true,
+  });
   await app.listen(3333);
   console.log('Server started! 🚀');
 }
