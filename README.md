@@ -8,10 +8,10 @@
 
 - [Tabela de Conteudo](#tabela-de-conteudo)
 - [Features](#features)
-- [Funcionamento e solução](#funcionamento)
+- [Funcionamento e solução](#funcionamento-e-solução)
 - [Como usar](#como-usar)
-  - [Pré Requisitos](#pre-requisitos)
-  - [Rodando o Leet Banking API](#pre-requisitos)
+  - [Pré Requisitos](#pré-requisitos)
+  - [Rodando o Leet Banking API](#rodando-o-leet-banking-api)
 - [Tecnologias](#tecnologias)
 - [Avaliação](#avaliacao)
 - [Próximas Features](#tecnologias)
