@@ -1,73 +1,91 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+<h1 align="center">
+    <a href="https://github.com/augustojs1/leet-banking-api">🏦  Leet Banking REST API</a>
+    
+</h1>
+<p align="center">💸 Gerencie seus gastos, renda, saldo, transações e recupere seu controle financeiro em tempo real.</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<!--ts-->
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- [Tabela de Conteudo](#tabela-de-conteudo)
+- [Features](#features)
+- [Como usar](#como-usar)
+  - [Pré Requisitos](#pre-requisitos)
+  - [Rodando o Leet Banking API](#pre-requisitos)
+- [Tecnologias](#tecnologias)
+- [Próximas Features](#tecnologias)
+- [Autor](#autor)
+<!--te-->
 
-## Description
+<h4 align="center"> 
+	🚧  Leet Banking API 💸 Em aprimoramento...  🚧
+</h4>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Features
 
-## Installation
+- [x] Cadastro de usuário
+- [x] Login de usuário
+- [x] Cadastro de transações do tipo renda
+- [x] Cadastro de transações do tipo gastos
+- [x] Documentação com Swagger
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+Para visualizar e editar o código pode também utilizar um edito de código [VSCode](https://code.visualstudio.com/).
+
+### 🔥 Rodando o Leet Banking API
 
 ```bash
+# Clone este repositório
+$ git clone https://github.com/augustojs1/leet-banking-api
+
+# Acesse a pasta do projeto utilizando a linha de comando
+$ cd leet-banking-api
+
+# Instale as dependências
 $ npm install
-```
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
+# Execute a aplicação em modo de desenvolvimento
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
+# O servidor inciará na porta:3333 - acesse <http://localhost:3333>
+
+# Documentação das rotas no Swagger acesse no browser
+http://localhost:3333/api
+
 ```
 
-## Test
+### 🛠 Tecnologias
 
-```bash
-# unit tests
-$ npm run test
+As seguintes ferramentas foram usadas na construção do projeto:
 
-# e2e tests
-$ npm run test:e2e
+- [Node.js](https://nodejs.org/en/)
+- [Nest.js](https://nestjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [Passport](https://www.passportjs.org/)
+- [Git Commit Message Linter](https://github.com/legend80s/commit-msg-linter)
+- [Swagger UI Express](https://github.com/scottie1984/swagger-ui-express)
 
-# test coverage
-$ npm run test:cov
-```
+### Próximas Features
 
-## Support
+- [ ] Testes Unitários e Testes de Integração
+- [ ] Utilizar PostgreSQL como banco de dados
+- [ ] Container Docker para a aplicação
+- [ ] Container Docker para o banco de dados
+- [ ] Deploy na AWS
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Autor
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+<a href="https://blog.rocketseat.com.br/author/thiago/">
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/56443909?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Augusto Souza 👨‍💻 </b></sub></a>
 
-## License
+Coded with ❤️ by Augusto Souza 👋🏽 Get in contact!
 
-Nest is [MIT licensed](LICENSE).
+[![Linkedin Badge](https://img.shields.io/badge/-Augusto_Souza-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/augustojs1/)
+[![Gmail Badge](https://img.shields.io/badge/-augustojsouza1@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:augustojsouza1@gmail.com)](mailto:augustojsouza1@gmail.com)
