@@ -53,6 +53,18 @@ $ cd leet-banking-api
 # Instale as dependências
 $ npm install
 
+# Crie um arquivo para as variáveis de ambiente
+$ touch .env
+
+# Complete o arquivo com as seguintes chave e valor
+
+# MONGO DB URI
+MONGO_URI=uri_para_o_cluter_no_mongo_db_atlas
+
+# JWT
+JWT_SECRET=valor_segredo_jwt
+JWT_EXPIRATION_TIME=10000000
+
 # Execute a aplicação em modo de desenvolvimento
 $ npm run start:dev
 
